@@ -19,7 +19,7 @@ public class Member {
     @Column(name = "member_no")
     private Long memberNo;
 
-    private String id;
+    private String identifier;
 
     private String name;
 
@@ -28,8 +28,8 @@ public class Member {
     private String password;
 
     @Builder
-    public Member(String id, String name, String email, String password) {
-        this.id = id;
+    public Member(String identifier, String name, String email, String password) {
+        this.identifier = identifier;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -37,7 +37,7 @@ public class Member {
 
     public static Member getFromMemberSignup(MemberSignup memberSignup) {
         return Member.builder()
-                .id(memberSignup.getId())
+                .identifier(memberSignup.getIdentifier())
                 .name(memberSignup.getName())
                 .email(memberSignup.getEmail())
                 .password(memberSignup.getPassword())

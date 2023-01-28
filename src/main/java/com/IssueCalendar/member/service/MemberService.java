@@ -22,7 +22,7 @@ public class MemberService {
     }
 
     public void checkDuplication(MemberSignup memberSignup) {
-        Optional<Member> member = memberRepository.findById(memberSignup.getId());
+        Optional<Member> member = memberRepository.findByIdentifier(memberSignup.getIdentifier());
         if (member.isPresent()) {
             throw new MemberDuplicationException();
         }

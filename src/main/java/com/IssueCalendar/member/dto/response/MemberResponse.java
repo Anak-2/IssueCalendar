@@ -8,7 +8,7 @@ import lombok.Getter;
 @Builder
 public class MemberResponse {
 
-    private String id;
+    private String identifier;
 
     private String name;
 
@@ -16,8 +16,8 @@ public class MemberResponse {
 
     private String password;
 
-    public MemberResponse(String id, String name, String email, String password) {
-        this.id = id;
+    public MemberResponse(String identifier, String name, String email, String password) {
+        this.identifier = identifier;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -25,7 +25,7 @@ public class MemberResponse {
 
     public static MemberResponse getFromMember(Member member) {
         return MemberResponse.builder()
-                .id(member.getId())
+                .identifier(member.getIdentifier())
                 .name(member.getName())
                 .email(member.getEmail())
                 .password(member.getPassword())

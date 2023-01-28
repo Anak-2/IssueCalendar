@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public class MemberSignup {
 
-    private String id;
+    private String identifier;
 
     private String name;
 
