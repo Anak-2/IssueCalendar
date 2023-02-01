@@ -1,21 +1,43 @@
 spring:
-  h2:
-    console:
-      enabled: true
+  # h2:
+  #  console:
+  #    enabled: true
 
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:issueCalendar
-    username: sa
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ENC(5sAlIUhINbBGyGy65hSLZCTYqVpuAv1306vPOsCtA5/cZpEYvyQXqa9eVbpS76/ZG3GZNbZq8Om3ItJ7jjjacCKTg58sBtcSPlk85jYNV1hRDvFLRZGOhPe5bqpApMakd1wcfFkYbeYG+scEt6HH4pW1PjakEGij4oJKYCiRTlx6vVWqbvuDzr63A8eJE+vrBhHKas5E8es=)
+    username: ENC(Gun08FpSBQJJrGWaljXMrQ==)
+    password: ENC(xo+UW4ljOA60o1bkqZVR0bf1VI/5UIxE)
+    # driver-class-name: org.h2.Driver
+    # url: jdbc:h2:mem:issueCalendar
 
   jpa:
-    properties:
-      hibernate:
-        show_sql: true
-        format_sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      format_sql: true
+      ddl-auto: create
 
   session:
     store-type: jdbc
     jdbc:
       initialize-schema: always
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+    password: ${JASYPT_PASSWORD}  # inject using environment variables
+    property:
+      prefix: ENC(
+      suffix: )
